@@ -1,18 +1,19 @@
 package com.example.AlcoholTester;
 
 
-import jakarta.validation.constraints.Positive;
-import jakarta.validation.constraints.PositiveOrZero;
+import jakarta.validation.constraints.Min;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
 
 public class Form {
 
-    private @PositiveOrZero(message = "Das  muss größer als 0 sein") int gewicht;
-    private String geschlecht;
-    private @PositiveOrZero(message = "Das  muss größer als 0 sein") int bier;
-    private @PositiveOrZero(message = "Das  muss größer als 0 sein") int wein;
-    private @PositiveOrZero(message = "Das  muss größer als 0 sein") int korn;
-    private @PositiveOrZero(message = "Das  muss größer als 0 sein") int vodka;
-    private @PositiveOrZero(message = "Das  muss größer als 0 sein") int whiskey;
+    private @Min(value = 0, message = "Das  muss größer als 0 sein") @NotNull(message = "Das darf nicht leer sein") int gewicht;
+    private @NotBlank String geschlecht;
+    private @Min(value = 0, message = "Das  muss größer als 0 sein")  @NotNull(message = "Das darf nicht leer sein") int bier;
+    private @Min(value = 0, message = "Das  muss größer als 0 sein")  @NotNull(message = "Das darf nicht leer sein") int wein;
+    private @Min(value = 0, message = "Das  muss größer als 0 sein")  @NotNull(message = "Das darf nicht leer sein") int korn;
+    private @Min(value = 0, message = "Das  muss größer als 0 sein")  @NotNull(message = "Das darf nicht leer sein") int vodka;
+    private @Min(value = 0, message = "Das  muss größer als 0 sein")  @NotNull(message = "Das darf nicht leer sein") int whiskey;
 
     public int getGewicht() {
         return gewicht;

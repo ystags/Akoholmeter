@@ -15,7 +15,7 @@
     </section>
     <section th:if="${ergebnis != null && ergebnis.getBlutalkoholwert() > 0.0}">
         <div class="btn-success form-control pl-4 pb-0 border-0 h2">
-            <p>Ihr Blutalkoholwert ist <span th:text="${ergebnis.getBlutalkoholwert()}">-/-</span>%</p>
+            <p> <stron>Ergebnis: </stron> Ihr Blutalkoholwert ist <span th:text="${ergebnis.getBlutalkoholwert()}">-/-</span>%</p>
         </div>
     </section>
     <section class="p-3">
