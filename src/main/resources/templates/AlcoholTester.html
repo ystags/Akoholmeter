@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="../static/css/bootstrap.min.css"
+          th:href="@{css/bootstrap.min.css}">
+    <title>Alcohol Tester</title>
+</head>
+<body>
+<main>
+    <section>
+        <div class="card-title">
+            <h1>Alkohol Test</h1>
+        </div>
+    </section>
+    <section th:if="${ergebnis != null && ergebnis.getBlutalkoholwert() > 0.0}">
+        <div class="btn-success form-control pl-4 pb-0 border-0 h2">
+            <p>Ihr Blutalkoholwert ist <span th:text="${ergebnis.getBlutalkoholwert()}">-/-</span>%</p>
+        </div>
+    </section>
+    <section class="p-3">
+        <div>
+            <p>füllen Sie bitte die Felder mit entsprechenden Informationen ein</p>
+        </div>
+        <div>
+            <form method="get" th:object="${form}" class="form-group border">
+                <div class="p-3">
+                    <div>
+                        <label for="gender" class="form-control border-0 h6">Wählen Sie Ihr Geschlecht</label>
+                        <select id="gender" name="geschlecht" class="form-control">
+                            <option value="" th:selected="${form.geschlecht == ''}">- Bitte wählen -</option>
+                            <option value="male" th:selected="${form.geschlecht == 'male'}">male</option>
+                            <option value="female" th:selected="${form.geschlecht == 'female'}">female</option>
+                        </select>
+                    </div>
+                    <div class="form-group h6">
+                        <label for="weight" class="form-control border-0">Geben Sie Ihr Gewicht in (kg) ein</label>
+                        <input type="text" name="gewicht" autocomplete="on" id="weight"  value="0" th:value="*{getGewicht()}"
+                               class="form-control">
+                        <small class="text-danger" th:if="${#fields.hasErrors('gewicht')}" th:errors="*{gewicht}">Falsche Eingabe!</small>
+                    </div>
+                    <div>
+                        <h6>Geben Sie die Menge der verzehrten Getränke (in ml) an:</h6>
+
+                        <ul>
+                            <li class="form-group">
+                                <label for="bier" class="">Bier (5 vol%)</label>
+                                <input type="number" name="bier"  id="bier"  value="0" th:value="*{getBier()}" class="form-control">
+                                <small class="text-danger" th:if="${#fields.hasErrors('bier')}" th:errors="*{bier}">Falsche Eingabe!</small>
+
+                            </li>
+                            <li class="form-group">
+                                <label for="wein" class="">Wein (12 vol%)</label>
+                                <input type="number" name="wein"  id="wein"  value="0" th:value="*{getWein()}" class="form-control">
+                                <small class="text-danger" th:if="${#fields.hasErrors('wein')}" th:errors="*{wein}">Falsche Eingabe!</small>
+
+                            </li>
+                            <li class="form-group">
+                                <label for="korn" class="">Korn (32 vol%)</label>
+                                <input type="number" name="korn" id="korn"  value="0" th:value="*{korn}" class="form-control">
+                                <small class="text-danger" th:if="${#fields.hasErrors('korn')}" th:errors="*{korn}">Falsche Eingabe!</small>
+
+                            </li>
+                            <li class="form-group">
+                                <label for="vodka" class="">Vodka (40 vol%)</label>
+                                <input type="number" name="vodka"  id="vodka"  value="0" th:value="*{vodka}" class="form-control">
+                                <small class="text-danger" th:if="${#fields.hasErrors('vodka')}" th:errors="*{vodka}">Falsche Eingabe!</small>
+
+                            </li>
+                            <li class="form-group">
+                                <label for="whiskey" >Whiskey (43 vol%)</label>
+                                <input type="number" name="whiskey"  id="whiskey"  value="0" th:value="*{whiskey}" class="form-control">
+                                <small class="text-danger" th:if="${#fields.hasErrors('whiskey')}" th:errors="*{whiskey}">Falsche Eingabe!</small>
+
+                            </li>
+                        </ul>
+                    </div>
+                    <div>
+                        <button type="submit" class="btn btn-success">Submit</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </section>
+</main>
+
+</body>
+</html>
